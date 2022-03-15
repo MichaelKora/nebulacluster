@@ -1,0 +1,78 @@
+- name: Configure Servers
+  hosts: allnodes
+  become: yes
+  tasks:
+    - name: create etc dir
+      command: sudo mkdir /etc/nebula
+    - name: create local dir for nebula binary
+      command: mkdir ~/nebula/
+    - name: copy nebula binary
+      copy:
+        src: ./nebula
+        dest: ~/nebula/
+    - name: copy ca.crt
+      copy:
+        src: ./ca.crt
+        dest: /etc/nebula/ca.crt
+
+- name: configure light house
+  hosts: lighthouse
+  become: yes
+  tasks:
+    - name: copy lighthouse config file
+      copy:
+        src: ./config-lighthouse.yaml
+        dest: /etc/nebula/config.yaml
+    - name: copy lighthouse.crt
+      copy:
+        src: ./lighthouse.crt
+        dest: /etc/nebula/host.crt
+    - name: copy lighthouse.key
+      copy:
+        src: ./lighthouse.key
+        dest: /etc/nebula/host.key
+
+- name: copy config file to all hosts
+  hosts: hosts
+  become: yes
+  tasks:
+    - name: copy config.yaml
+      copy:
+        src: ./config.yaml
+        dest: /etc/nebula/config.yaml
+
+  
+- name: copy keys and scrt to server-1
+  hosts: server-1
+  tasks:
+    - name: copy server-1.crt
+      copy:
+        src: ./server-1.crt
+        dest: /etc/nebula/host.crt
+    - name: copy server-1.key
+      copy:
+        src: ./server-1.key
+        dest: /etc/nebula/host.key
+
+- name: copy keys and scrt to server-2
+  hosts: server-2
+  become: yes
+  tasks:
+    - name: copy server-2.crt
+      copy:
+        src: ./server-2.crt
+        dest: /etc/nebula/host.crt
+    - name: copy server-2.key
+      copy:
+        src: ./server-2.key
+        dest: /etc/nebula/host.key
+
+
+#- name: start the service in all servers
+#  hosts: all
+#  become: yes
+#  tasks:
+#    - name: run commands
+#      shell: |
+#        cd ~/nebula/
+#        sudo ./nebula -config /etc/nebula/config.yaml
