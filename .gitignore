@@ -1,1 +1,4 @@
 ca.key
+*key
+*crt
+config-1.yaml

@@ -1,0 +1,17 @@
+[allnodes]
+141.95.111.180 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+141.95.104.58 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+141.95.108.90 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+
+[lighthouse]
+141.95.111.180 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+
+[hosts]
+141.95.104.58 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+141.95.108.90 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+
+[server-1]
+141.95.104.58 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa
+
+[server-2]
+141.95.108.90 ansible_user=ubuntu ansible_ssh_private_key_file=../id_rsa

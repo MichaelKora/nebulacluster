@@ -1,16 +1,25 @@
 - name: Configure Servers
   hosts: allnodes
-  become: yes
   tasks:
     - name: create etc dir
-      command: sudo mkdir /etc/nebula
+      become: yes
+      file:
+        path: /etc/nebula
+        state: directory
     - name: create local dir for nebula binary
-      command: mkdir ~/nebula/
+      file:
+        path: ~/nebula
+        state: directory
     - name: copy nebula binary
       copy:
         src: ./nebula
-        dest: ~/nebula/
+        dest: ~/nebula/nebula
+
+    - name: change mode to 755
+      shell: sudo chmod 755 ~/nebula/nebula
+
     - name: copy ca.crt
+      become: yes
       copy:
         src: ./ca.crt
         dest: /etc/nebula/ca.crt
@@ -44,6 +53,7 @@
   
 - name: copy keys and scrt to server-1
   hosts: server-1
+  become: yes
   tasks:
     - name: copy server-1.crt
       copy:
