@@ -28,6 +28,10 @@
   hosts: lighthouse
   become: yes
   tasks:
+    - name: create ssh key on lighthouse
+      shell: |
+        cd /etc/nebula
+        ssh-keygen -t ed25519 -f ssh_host_ed25519_key -N "" < /dev/null
     - name: copy lighthouse config file
       copy:
         src: ./config-lighthouse.yaml
@@ -45,6 +49,10 @@
   hosts: hosts
   become: yes
   tasks:
+    - name: create ssh keys on hosts
+      shell: |
+        cd nebula/
+        ssh-keygen -f ssh_user.key
     - name: copy config.yaml
       copy:
         src: ./config.yaml

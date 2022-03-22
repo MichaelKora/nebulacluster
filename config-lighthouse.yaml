@@ -127,20 +127,20 @@ punchy:
 #preferred_ranges: ["172.16.0.0/24"]
 
 # sshd can expose informational and administrative functions via ssh this is a
-#sshd:
+sshd:
   # Toggles the feature
-  #enabled: true
+  enabled: true
   # Host and port to listen on, port 22 is not allowed for your safety
-  #listen: 127.0.0.1:2222
+  listen: 127.0.0.1:2222
   # A file containing the ssh host private key to use
   # A decent way to generate one: ssh-keygen -t ed25519 -f ssh_host_ed25519_key -N "" < /dev/null
-  #host_key: ./ssh_host_ed25519_key
+  host_key: /etc/nebula/ssh_host_ed25519_key
   # A file containing a list of authorized public keys
-  #authorized_users:
-    #- user: steeeeve
+  authorized_users:
+    - user: root 
       # keys can be an array of strings or single string
-      #keys:
-        #- "ssh public key string"
+      keys:
+        - ""
 
 # Configure the private interface. Note: addr is baked into the nebula certificate
 tun:

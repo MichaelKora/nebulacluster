@@ -16,11 +16,11 @@ tar -xzf nebula-linux-amd64.tar.gz
 ./nebula-cert sign -name "lighthouse" -ip "10.0.0.1/24"
 ./nebula-cert sign -name "server-1" -ip "10.0.0.11/24" -groups "servers"
 ./nebula-cert sign -name "server-2" -ip "10.0.0.12/24" -groups "servers"
-	
-#./nebula-cert sign -name "creator-laptop" -ip "10.0.0.13/24" -groups "laptops"
+
+./nebula-cert sign -name "laptop-mike" -ip "10.0.0.21/24" -groups "laptops"
 
 #config file for each node
-curl -o config-1.yml https://raw.githubusercontent.com/slackhq/nebula/master/examples/config.yml
-cp config-1.yml config-lighthouse.yaml
-cp config-1.yml config.yaml
-cp config-1.yml configlaptops.yaml
+#curl -o config-1.yml https://raw.githubusercontent.com/slackhq/nebula/master/examples/config.yml
+#cp config-1.yml config-lighthouse.yaml
+#cp config-1.yml config.yaml
+#cp config-1.yml configlaptops.yaml

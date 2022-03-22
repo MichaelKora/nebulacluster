@@ -19,7 +19,7 @@ pki:
 #   "{nebula ip}": ["{routable ip/dns name}:{routable port}"]
 # Example, if your lighthouse has the nebula IP of 192.168.100.1 and has the real ip address of 100.64.22.11 and runs on port 4242:
 static_host_map:
-        "10.0.0.1": ["141.95.111.180:4242"]
+        "10.0.0.1": ["141.95.108.149:4242"]
 
 
 lighthouse:
@@ -136,10 +136,10 @@ punchy:
   #listen: 127.0.0.1:2222
   # A file containing the ssh host private key to use
   # A decent way to generate one: ssh-keygen -t ed25519 -f ssh_host_ed25519_key -N "" < /dev/null
-  #host_key: ./ssh_host_ed25519_key
+  #host_key: ../id_rsa
   # A file containing a list of authorized public keys
   #authorized_users:
-    #- user: steeeeve
+    #- user: ubuntu
       # keys can be an array of strings or single string
       #keys:
         #- "ssh public key string"
@@ -259,16 +259,5 @@ firewall:
   inbound:
     # Allow icmp between any nebula hosts
     - port: any
-      proto: icmp
-      host: any
-
-    # Allow tcp from any host 
-    - port: any
-      proto: tcp
-      host: any
-
-
-    # Allow udp from any host
-    - port: any
-      proto: udp
+      proto: any
       host: any
