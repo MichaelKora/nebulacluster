@@ -51,8 +51,8 @@
   tasks:
     - name: create ssh keys on hosts
       shell: |
-        cd nebula/
-        ssh-keygen -f ssh_user.key
+        cd /etc/nebula
+        ssh-keygen -f ssh_user.key -q -N ""
     - name: copy config.yaml
       copy:
         src: ./config.yaml
