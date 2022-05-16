@@ -2,7 +2,7 @@ This Project is a prototype on how to use nebula to create a private network to 
 There are few step to go through before building this project. 
 
 0. Preconditions:
-   - make sure your local computer/ or the where the programm will be build can access the 3 Machines(Lightouse, 2 Hosts) via ssh
+   - make sure your local computer/ or the where the programm will be built can access the 3 Machines(Lightouse, 2 Hosts) via ssh
 1. First you have to perform some modifications:
    - update the `inventory`file.
    - you can change the name of your hosts in the `installations.sh` file. 
